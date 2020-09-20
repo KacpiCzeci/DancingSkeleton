@@ -1,0 +1,5 @@
+﻿  main.cpp
+C:\Users\Kacper\Desktop\GKIW-master\main.cpp(25,18): warning C4305: "inicjowanie": obcięcie z "double" do "float"
+C:\Users\Kacper\Desktop\GKIW-master\main.cpp(77,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Users\Kacper\Desktop\GKIW-master\main.cpp(124,26): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
+  ProjectGKIW.vcxproj -> C:\Users\Kacper\Desktop\GKIW-master\Debug\ProjectGKIW.exe
