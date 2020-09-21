@@ -38,7 +38,7 @@ public:
 	std::vector<Texture> textures_loaded;
 	std::vector<Texture> normals;
 	std::vector<Mesh> meshes;
-	std::vector<float> verticesLLD; //lab like drow
+	std::vector<float> verticesLLD;
 	std::vector<float> normalsLLD;
 	std::vector<float> colorLLD;
 	std::vector<float> texCordsLLD;
@@ -50,5 +50,10 @@ public:
 	Mesh processMesh(aiMesh*, const aiScene*);
 	void setupForLLD(float=1, float=0, float=0, float=1);
 	void drawLLD(GLuint *);
+	float* getVerticesLLD();
+	float* getNormalsLLD();
+	float* getTexturesLLD();
+	int getVertexCount();
+	glm::mat4 getModelPosition();
 };
 

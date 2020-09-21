@@ -135,6 +135,29 @@ void ModelCtrl::drawLLD(GLuint* texture) {
     glDisableVertexAttribArray(sp->a("texture"));
 }
 
+float* ModelCtrl::getVerticesLLD()
+{
+    return &this->verticesLLD[0];
+}
 
+float* ModelCtrl::getNormalsLLD()
+{
+    return &this->normalsLLD[0];
+}
+
+float* ModelCtrl::getTexturesLLD()
+{
+    return &this->texCordsLLD[0];
+}
+
+int ModelCtrl::getVertexCount()
+{
+    return this->vertexCount;
+}
+
+glm::mat4 ModelCtrl::getModelPosition()
+{
+    return this->ModelPosition;
+}
 
 

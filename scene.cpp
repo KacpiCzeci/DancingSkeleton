@@ -195,7 +195,8 @@ void Scene::drawScene(float timestamp, std::vector<GLuint> texture) {
 	glUniform4fv(sp->u("lp_dir"), 4, glm::value_ptr(lightsdir[0]));
 	glUniform1fv(sp->u("lp_anglein"), 4, anglesin);
 	glUniform1fv(sp->u("lp_angleout"), 4, anglesout);
-
+	glUniform1i(sp->u("keyframe"), 0);
+	glUniform1f(sp->u("time"), 0.0f);
 
 	glEnableVertexAttribArray(sp->a("vertex"));
 	glVertexAttribPointer(sp->a("vertex"), 4, GL_FLOAT, false, 0, (float*)vertices.data());
@@ -206,6 +207,7 @@ void Scene::drawScene(float timestamp, std::vector<GLuint> texture) {
 	glUniform1i(sp->u("tex"), 0);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture[0]);
+
 
 	glDrawArrays(GL_TRIANGLES, 0, vertices.size() / 4);
 	glDisableVertexAttribArray(sp->a("vertex"));

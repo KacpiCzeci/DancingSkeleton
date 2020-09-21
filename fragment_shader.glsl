@@ -46,13 +46,12 @@ void main(void) {
 
 		cosDir = dot(-L, ndir);
 		spot = smoothstep(angleout[i], anglein[i], cosDir);
-		//spot = clamp((cosDir-angleout[i])/(anglein[i]-angleout[i]), 0 ,1);
 
 		diffuseL = clamp(dot(N, L), 0, 1);
 		diffuse += attenuation * spot * diffuseL  * color * vec4(1, 1, 1, 1); // Kd * diffuseL * light
 
 		r = reflect(-L, N);
-		specularL = pow(clamp(dot(r, V), 0, 1), 25); // power shininess
+		specularL = pow(clamp(dot(r, V), 0, 1), 25);
 		specular +=  attenuation * spot * vec4(1, 1, 1, 1) * specularL;
 
 	}

@@ -25,6 +25,7 @@ float key_Side = 0.0f;
 float speed = 0.3;
 float key_Y_Side = 5.0f;
 bool nextKF = 0;
+bool secondPassed = 0;
 std::vector<GLuint> texture;
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod) {
@@ -84,11 +85,11 @@ std::vector<GLuint> readTexture(std::vector<const char*> file) {
 
 		glTexImage2D(GL_TEXTURE_2D, 0, 4, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, (unsigned char*)image.data());
 
-		//
+		
 		glGenerateMipmap(GL_TEXTURE_2D);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		//
+		
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
@@ -118,22 +119,28 @@ int main(){
 
 	Scene S;
 	ModelGroup SceletonA(9,dane1, dane2, 0.0f, 3.0f, 0.0f);
+	float Time = 0.0f;
 	glfwSetTime(0);
-	//
+	
 	while (!glfwWindowShouldClose(libcontroll.getWindow())) {
 		timestamp = glfwGetTime();
 		glfwSetTime(0);
 		drowIT.clear();
 		S.drawScene(timestamp, texture);
-		SceletonA.Draw(&texture[4]);
+
+
+		SceletonA.interpolation(Time, &texture[4]);
+
+
 		glfwSwapBuffers(libcontroll.getWindow());
 		glfwPollEvents();
-		if (nextKF) {
+		if (Time >= 1.0f)
+		{
+			Time = 0.0f;
 			SceletonA.goToNextKF();
-			nextKF = 0;
+			std::cout << "next frame" << std::endl;
 		}
 		drowIT.setCamera(key_X, key_Y, key_Z, key_Side, key_Y_Side);
-		
 	}
 
 	libcontroll.endAll();

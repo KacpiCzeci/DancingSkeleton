@@ -1,5 +1,7 @@
-﻿  main.cpp
-C:\Users\Kacper\Desktop\GKIW-master\main.cpp(25,18): warning C4305: "inicjowanie": obcięcie z "double" do "float"
-C:\Users\Kacper\Desktop\GKIW-master\main.cpp(77,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Users\Kacper\Desktop\GKIW-master\main.cpp(124,26): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
+﻿  reflector.cpp
+C:\Users\Kacper\Desktop\GKIW-master\reflector.cpp(1,10): warning C4067: nieoczekiwane tokeny występujące po dyrektywie preprocesora - oczekiwano nowego wiersza
+C:\Users\Kacper\Desktop\GKIW-master\reflector.cpp(21,48): warning C4244: "+=": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\Kacper\Desktop\GKIW-master\reflector.cpp(32,44): warning C4244: "+=": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\Kacper\Desktop\GKIW-master\reflector.cpp(100,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Users\Kacper\Desktop\GKIW-master\reflector.cpp(228,20): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   ProjectGKIW.vcxproj -> C:\Users\Kacper\Desktop\GKIW-master\Debug\ProjectGKIW.exe
