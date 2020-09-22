@@ -25,7 +25,6 @@ float key_Side = 0.0f;
 float speed = 0.3;
 float key_Y_Side = 5.0f;
 bool nextKF = 0;
-bool secondPassed = 0;
 std::vector<GLuint> texture;
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod) {
@@ -93,8 +92,8 @@ std::vector<GLuint> readTexture(std::vector<const char*> file) {
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-		std::cout << width << "," << height << "\n";
-		std::cout << error << "\n";
+		//std::cout << width << "," << height << "\n";
+		//std::cout << error << "\n";
 
 		image.clear();
 	}
@@ -118,7 +117,7 @@ int main(){
 	std::string dane2 = "kf";
 
 	Scene S;
-	ModelGroup SceletonA(9,dane1, dane2, 0.0f, 3.0f, 0.0f);
+	ModelGroup SceletonA(9,dane1, dane2, 0.0f, 4.0f, 0.0f);
 	float Time = 0.0f;
 	glfwSetTime(0);
 	
@@ -130,6 +129,7 @@ int main(){
 
 
 		SceletonA.interpolation(Time, &texture[4]);
+		Time += 0.05f;
 
 
 		glfwSwapBuffers(libcontroll.getWindow());

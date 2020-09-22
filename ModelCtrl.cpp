@@ -3,7 +3,7 @@
 ModelCtrl::ModelCtrl(float x, float y, float z) {
     this->ModelPosition = glm::mat4(1.0f);
     this->ModelPosition = glm::translate(this->ModelPosition, glm::vec3(x, y, z));
-    this->ModelPosition = glm::scale(this->ModelPosition, glm::vec3(0.6, 0.6, 0.6));
+    this->ModelPosition = glm::scale(this->ModelPosition, glm::vec3(0.7, 0.7, 0.7));
 }
 
 void ModelCtrl::loadModel(const std::string &path){

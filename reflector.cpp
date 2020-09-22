@@ -1,5 +1,6 @@
 #include "reflector.h";
 #include "pipe.h"
+#include "reflector_const.h"
 
 Reflector::Reflector(glm::mat4 M) {
 	M_handle = M;
@@ -42,59 +43,9 @@ void Reflector::Move(float timestamp) {
 };
 
 void Reflector::createHandle() {
-	vertices_handle = {
-		-5.0f, -5.0f, 0.0f, 1.0f,
-		-5.0f, 5.0f, 0.0f, 1.0f,
-		-5.0f, -5.0f, 2.0f, 1.0f,
+	vertices_handle.insert(vertices_handle.begin(), v_h.begin(), v_h.end());
 
-		-5.0f, 5.0f, 2.0f, 1.0f,
-		-5.0f, -5.0f, 2.0f, 1.0f,
-		-5.0f, 5.0f, 0.0f, 1.0f,
-
-
-		5.0f, 5.0f, 0.0f, 1.0f,
-		5.0f, 5.0f, 2.0f, 1.0f,
-		-5.0f, 5.0f, 0.0f, 1.0f,
-
-		-5.0f, 5.0f, 2.0f, 1.0f,
-		-5.0f, 5.0f, 0.0f, 1.0f,
-		5.0f, 5.0f, 2.0f, 1.0f,
-
-
-		5.0f, -5.0f, 0.0f, 1.0f,
-		5.0f, 5.0f, 2.0f, 1.0f,
-		5.0f, 5.0f, 0.0f, 1.0f,
-
-		5.0f, -5.0f, 2.0f, 1.0f,
-		5.0f, 5.0f, 2.0f, 1.0f,
-		5.0f, -5.0f, 0.0f, 1.0f
-	};
-
-	textcords_handle = {
-		0.4f, 0.0f,
-		0.6f, 0.0f,
-		0.4f, 1.0f,
-
-		0.6f, 1.0f,
-		0.4f, 1.0f,
-		0.6f, 0.0f,
-
-		1.0f, 0.4f,
-		1.0f, 0.6f,
-		0.0f, 0.4f,
-
-		0.0f, 0.6f,
-		0.0f, 0.4f,
-		1.0f, 0.6f,
-
-		0.0f, 0.4f,
-		1.0f, 0.6f,
-		1.0f, 0.4f,
-
-		0.0f, 0.6f,
-		1.0f, 0.6f,
-		0.0f, 0.4f
-	};
+	textcords_handle.insert(textcords_handle.begin(), t_h.begin(), t_h.end());
 
 	glm::vec3 a,b,c;
 	for (int i = 0; i < vertices_handle.size(); i += 12) {
@@ -112,117 +63,9 @@ void Reflector::createHandle() {
 }
 
 void Reflector::createBase() {
-	vertices_base = {
-		//bottom
-		-5.0f, -3.0f, -10.0f, 1.0f,
-		-5.0f, 1.0f, -10.0f, 1.0f,
-		-5.0f, -3.0f, 15.0f, 1.0f,
+	vertices_base.insert(vertices_base.begin(), v_b.begin(), v_b.end());
 
-		-5.0f, 1.0f, -10.0f, 1.0f,
-		-5.0f, 1.0f, 15.0f, 1.0f,
-		-5.0f, -3.0f, 15.0f, 1.0f,
-
-		//
-		5.0f, -3.0f, -10.0f, 1.0f,
-		5.0f, -3.0f, 15.0f, 1.0f,
-		5.0f, 1.0f, -10.0f, 1.0f,
-
-		5.0f, 1.0f, -10.0f, 1.0f,
-		5.0f, -3.0f, 15.0f, 1.0f,
-		5.0f, 1.0f, 15.0f, 1.0f,
-
-		//
-		-5.0f, -3.0f, -10.0f, 1.0f,
-		5.0f, 1.0f, -10.0f, 1.0f,
-		-5.0f, 1.0f, -10.0f, 1.0f,
-
-		5.0f, 1.0f, -10.0f, 1.0f,
-		-5.0f, -3.0f, -10.0f, 1.0f,
-		5.0f, -3.0f, -10.0f, 1.0f,
-
-		//
-		-5.0f, -3.0f, 15.0f, 1.0f,
-		-5.0f, 1.0f, 15.0f, 1.0f,
-		5.0f, 1.0f, 15.0f, 1.0f,
-
-		5.0f, 1.0f, 15.0f, 1.0f,
-		5.0f, -3.0f, 15.0f, 1.0f,
-		-5.0f, -3.0f, 15.0f, 1.0f,
-
-		//
-		-5.0f, 1.0f, 15.0f, 1.0f,
-		5.0f, 1.0f, -10.0f, 1.0f,
-		5.0f, 1.0f, 15.0f, 1.0f,
-
-		-5.0f, 1.0f, 15.0f, 1.0f,
-		-5.0f, 1.0f, -10.0f, 1.0f,
-		5.0f, 1.0f, -10.0f, 1.0f,
-
-		//
-		-5.0f, -3.0f, 15.0f, 1.0f,
-		5.0f, -3.0f, 15.0f, 1.0f,
-		5.0f, -3.0f, -10.0f, 1.0f,
-
-		-5.0f, -3.0f, 15.0f, 1.0f,
-		5.0f, -3.0f, -10.0f, 1.0f,
-		-5.0f, -3.0f, -10.0f, 1.0f
-
-	};
-
-	textcords_base = {
-		0.42f, 0.0f,
-		0.58f, 0.0f,
-		0.42f, 1.0f,
-
-		0.58f, 0.0f,
-		0.58f, 1.0f,
-		0.42f, 1.0f,
-
-		//
-		0.42f, 0.0f,
-		0.42f, 1.0f,
-		0.58f, 0.0f,
-
-		0.58f, 0.0f,
-		0.42f, 1.0f,
-		0.58f, 1.0f,
-
-		//
-		0.3f, 0.42f,
-		0.7f, 0.58f,
-		0.3f, 0.58f,
-
-		0.7f, 0.58f,
-		0.3f, 0.42f,
-		0.7f, 0.42f,
-
-		//
-		0.3f, 0.42f,
-		0.3f, 0.58f,
-		0.7f, 0.58f,
-
-		0.7f, 0.58f,
-		0.7f, 0.42f,
-		0.3f, 0.42f,
-
-		//
-		0.3f, 1.0f,
-		0.7f, 0.0f,
-		0.7f, 1.0f,
-
-		0.3f, 1.0f,
-		0.3f, 0.0f,
-		0.7f, 0.0f,
-
-		//
-		0.3f, 1.0f,
-		0.7f, 1.0f,
-		0.7f, 0.0f,
-
-		0.3f, 1.0f,
-		0.7f, 0.0f,
-		0.3f, 0.0f
-	};
+	textcords_base.insert(textcords_base.begin(), t_b.begin(), t_b.end());
 
 	glm::vec3 a, b, c;
 	for (int i = 0; i < vertices_base.size(); i += 12) {
@@ -267,6 +110,7 @@ void Reflector::changeMatricehandle() {
 }
 
 void Reflector::drawHandle(std::vector<GLuint> texture) {
+	sp->use();
 	glUniformMatrix4fv(sp->u("M"), 1, false, glm::value_ptr(M_handle));
 
 	glEnableVertexAttribArray(sp->a("vertex"));
@@ -294,6 +138,7 @@ void Reflector::changeMatricebase() {
 }
 
 void Reflector::drawBase(std::vector<GLuint> texture) {
+	sp->use();
 	glUniformMatrix4fv(sp->u("M"), 1, false, glm::value_ptr(M_base));
 
 	glEnableVertexAttribArray(sp->a("vertex"));

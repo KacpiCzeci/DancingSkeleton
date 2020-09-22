@@ -17,7 +17,7 @@ void main(void) {
 	
 	vec4 color = texture(tex, itexture);
 
-	vec4 ambient = 0.2 * vec4(1, 1, 1, 0) * color;
+	vec4 ambient = 0.2 * vec4(1, 1, 1, 1) * color;
 	float attenuation;
 
 	float diffuseL;
@@ -29,8 +29,12 @@ void main(void) {
 	vec4 ndir;
 	float cosDir;
 	float spot;
+	vec4 light_colors[4];
 
-		
+	light_colors[0] = vec4(1, 0, 0, 1);
+	light_colors[1] = vec4(0, 0, 1, 1);
+	light_colors[2] = vec4(0, 1, 0, 1);
+	light_colors[3] = vec4(1, 1, 0, 1);	
 	
 	int i = 0;
 	vec4 temp = vec4(0,0,0,0);
@@ -48,7 +52,7 @@ void main(void) {
 		spot = smoothstep(angleout[i], anglein[i], cosDir);
 
 		diffuseL = clamp(dot(N, L), 0, 1);
-		diffuse += attenuation * spot * diffuseL  * color * vec4(1, 1, 1, 1); // Kd * diffuseL * light
+		diffuse += attenuation * spot * diffuseL  * color * light_colors[i]; // Kd * diffuseL * light
 
 		r = reflect(-L, N);
 		specularL = pow(clamp(dot(r, V), 0, 1), 25);
